@@ -11,19 +11,15 @@
 
 <div id="list"></div>
 
-
+<!-- Ao instalar socket.io e iniciar o servidor, dentro de node modules teremos socket.io/dist/socket.io.js;
+    Quando fazemos o require de socket.io no back automaticamente o node esta servindo este arquivo;
+    Então ja temos acesso a esse arquivo.
+-->
+<script src="/socket.io/socket.io.js"></script>
 <script>
-    fetch('/list')
-        .then(res=> res.json()
-        .then(data =>{
-            let list = '<u>';
-            data.map(item =>{
-                list += `<li>${item}</li>`
-            })
-            list += '</u>';
-            document.querySelector('#list').innerHTML = list;
-        })
-    )
+
+    const socket = io('http://localhost:3000') // inicia a conexção
+
 </script>
 
 </body>

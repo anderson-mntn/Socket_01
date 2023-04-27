@@ -9,7 +9,7 @@ app.get('/list', (req, res) =>{
     res.send(list);
 });
 
-app.use('/', express.static(path.join(__dirname, '/public')));
+app.use('/', express.static(path.join(__dirname, '/public'))); // servindo o index.html
 
 const server = app.listen(3000, () =>{
     console.log('App running!');
