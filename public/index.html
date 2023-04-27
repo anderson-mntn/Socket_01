@@ -12,10 +12,18 @@
 <div id="list"></div>
 
 
-<script src="/socket.io/socket.io.js"></script>
-
 <script>
-    
+    fetch('/list')
+        .then(res=> res.json()
+        .then(data =>{
+            let list = '<u>';
+            data.map(item =>{
+                list += `<li>${item}</li>`
+            })
+            list += '</u>';
+            document.querySelector('#list').innerHTML = list;
+        })
+    )
 </script>
 
 </body>
