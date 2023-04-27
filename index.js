@@ -24,6 +24,13 @@ const io = socketIO(server) // server é quem vai estar gerenciando as reqs http
 */
 io.on('connection', (socket)=>{
     console.log('New connection');
+
+    // emitindo para o socket.on() - os argumentos devem dar match
+    socket.emit('hello', {msg: "Welcome from back"})
+
+    socket.on('hello_from_front', (data) =>{
+        console.log(data.msg);
+    })
 })
 
 

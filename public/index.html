@@ -14,11 +14,21 @@
 <!-- Ao instalar socket.io e iniciar o servidor, dentro de node modules teremos socket.io/dist/socket.io.js;
     Quando fazemos o require de socket.io no back automaticamente o node esta servindo este arquivo;
     Então ja temos acesso a esse arquivo.
+
+    Sempre Precisamos preparar o lado inverso para receber tal chamada do .emit() com o .on() ;
 -->
 <script src="/socket.io/socket.io.js"></script>
 <script>
 
     const socket = io('http://localhost:3000') // inicia a conexção
+
+    socket.on('hello', (data)=>{
+
+        console.log(data.msg);
+
+        socket.emit('hello_from_front', {msg: "Hello from front"}) // Poderia ser usado qnd clicado em algum botão. 
+
+    })
 
 </script>
 
