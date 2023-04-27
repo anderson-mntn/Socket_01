@@ -25,9 +25,15 @@ const io = socketIO(server) // server é quem vai estar gerenciando as reqs http
 io.on('connection', (socket)=>{
     console.log('New connection');
 
-    // emitindo para o socket.on() - os argumentos devem dar match
-    socket.emit('hello', {msg: "Welcome from back"})
+    const randomNum = Math.random();
+    //Math.round(Math.random() * 10)
 
+    // emitindo para o socket.on() - os argumentos devem dar match
+    //socket.emit('hello', {msg: `Welcome from back! ${randomNum}`})
+
+    //emitindo para todos user uma emissão com o mesmo numero basta trocar para io.
+    io.emit('hello', {msg: `Welcome from back! ${randomNum}`})
+    
     socket.on('hello_from_front', (data) =>{
         console.log(data.msg);
     })
